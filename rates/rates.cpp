@@ -33,10 +33,15 @@ int main()
 
         if (res == 0) { // проверяем код ошибки, если 0, то все ок
             auto jdata = nlohmann::json::parse(readBuffer); // преобразуем полученную JSON строку в объект 
-            std::cout << jdata << std::endl;
+            
+            for (auto& el : jdata["Valute"]) {
+                std::cout << el["CharCode"] <<":"<< el["Value"] << std::endl;
+            }
+
+            //std::cout << jdata["Valute"]["USD"] << std::endl;
         }
 
-        Sleep(1000);
+        Sleep(10000);
 
     }
     
